@@ -1,0 +1,16 @@
+.item-list {
+  text-align: center;
+  margin-top: 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.h2-itemlistcontainer {
+  margin-left: 20px;
+}
+
+.item-list ul li {
+  margin: 10px;
+}
