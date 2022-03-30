@@ -45,11 +45,7 @@ const ItemList = () => {
     <div className="items-container row">
       {products.map((product) => {
         const { id } = product;
-        return (
-          <>
-            <Item data={product} key={id} />
-          </>
-        );
+        return <Item data={product} key={id} />;
       })}
     </div>
   );

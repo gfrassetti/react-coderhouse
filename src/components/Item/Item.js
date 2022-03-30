@@ -1,6 +1,8 @@
 import React from "react";
 import "./Item.css";
-import ItemCount from "../ItemCount/ItemCount";
+import { Card, Button } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const Item = ({ data }) => {
   const { id, title, description, price, pictureUrl } = data;
@@ -16,7 +18,14 @@ const Item = ({ data }) => {
         <p>{description}</p>
         <p>{price}</p>
       </div>
-      <ItemCount stock={10} name="Producto 1" initial={1} />
+      <Card.Footer>
+        <Router>
+          <LinkContainer to="/products">
+            <Button>Ver mas</Button>
+          </LinkContainer>
+        </Router>
+      </Card.Footer>
+      {/*       <ItemCount stock={10} name="Producto 1" initial={1} /> */}
     </div>
   );
 };

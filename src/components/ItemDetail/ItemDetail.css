@@ -1,0 +1,32 @@
+.info-detail {
+  padding: 0;
+}
+
+.text-center {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.MuiBox-root,
+.css-jm3i9k {
+  margin-right: 0 !important;
+}
+
+.detail-item {
+  text-align: left;
+}
+
+.ul-details {
+  list-style: circle;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  font-weight: bold;
+  font-size: 1rem;
+}
