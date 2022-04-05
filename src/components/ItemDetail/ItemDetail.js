@@ -5,9 +5,8 @@ import ItemCount from "../ItemCount/ItemCount";
 import "./ItemDetail.css";
 import RatingItem from "./RatingItem";
 
-const ItemDetail = (product) => {
-  const { id, title, description, price, pictureUrl, details } =
-    product.product;
+const ItemDetail = ({ product }) => {
+  const { id, title, description, price, pictureUrl, details } = product;
   {
     console.log(details);
   }
