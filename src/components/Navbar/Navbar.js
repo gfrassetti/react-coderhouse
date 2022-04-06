@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import CartWidget from "../CartWidget/CartWidget";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = ["Home", "Products", "Contact"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navbar = () => {
