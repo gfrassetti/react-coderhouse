@@ -17,14 +17,14 @@ const ItemDetail = ({ product }) => {
   }
   return (
     <>
-      <Container maxWidth="sm">
-        <Container>
-          <Figure>
-            <Figure.Image src={`../images/${product.pictureUrl}`} />
-          </Figure>
-        </Container>
+      <Container maxWidth="sm" className="mt-4">
         <Container>
           <Card variant="outlined">
+            <Container>
+              <Figure>
+                <Figure.Image src={`../images/${product.pictureUrl}`} />
+              </Figure>
+            </Container>
             <ul className="info-detail">
               <li className="title">{product.title}</li>
               <Container className="text-center">
