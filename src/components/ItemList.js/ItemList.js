@@ -6,7 +6,7 @@ const ItemList = () => {
   const [products, setProducts] = useState([]);
 
 
-  const getProducts = () => {
+  const getProducts = async () => {
     try {
       const response = await fetch(`http://localhost:3000/api.json`);
       const dataJson = await response.json();

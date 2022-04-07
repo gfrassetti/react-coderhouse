@@ -8,13 +8,12 @@ const ItemDetailContainer = () => {
 
   useEffect(async () => {
     const products = await getProducts();
-    products.map((product) =>{
-      if (data.id == id) {
-        return setData(product)
-      }   
-    })
+    products.map((product) => {
+      if (product.id == id) {
+        return setData(product);
+      }
+    });
   }, []);
-
 
   const getProducts = async () => {
     try {

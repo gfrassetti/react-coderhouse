@@ -11,15 +11,16 @@ import ItemCount from "../ItemCount/ItemCount";
 import "./ItemDetail.css";
 import RatingItem from "./RatingItem";
 
-const ItemDetail = ({product}) => {
-
+const ItemDetail = ({ product }) => {
+  {
+    console.log(product.pictureUrl);
+  }
   return (
     <>
-      <p>{product.title}</p>
       <Container maxWidth="sm">
         <Container>
           <Figure>
-            <Figure.Image src={`./images/${product.pictureUrl}`} />
+            <Figure.Image src={`../images/${product.pictureUrl}`} />
           </Figure>
         </Container>
         <Container>

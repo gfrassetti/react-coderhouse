@@ -9,3 +9,8 @@
   object-fit: contain;
   height: 200px;
 }
+
+.btn-primary a{
+  color: white;
+  text-decoration: none;
+}

@@ -1,5 +1,6 @@
 .info-detail {
   padding: 0;
+  text-align: center;
 }
 
 .text-center {
@@ -10,7 +11,7 @@
 
 .MuiBox-root,
 .css-jm3i9k {
-  margin-right: 0 !important;
+  margin: 0 auto !important;
 }
 
 .detail-item {
