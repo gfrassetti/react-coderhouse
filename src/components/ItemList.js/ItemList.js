@@ -5,37 +5,17 @@ import "./ItemList.css";
 const ItemList = () => {
   const [products, setProducts] = useState([]);
 
-  const mock = [
-    {
-      id: 1,
-      title: "Monitor",
-      description: "View Sonic 27",
-      price: "ARS 60.000",
-      pictureUrl: "monitor.webp",
-    },
-    {
-      id: 2,
-      title: "Teclado",
-      description: "Corsair Arpon",
-      price: "ARS 45.000",
-      pictureUrl: "corsairk70.webp",
-    },
-    {
-      id: 3,
-      title: "Auriculares",
-      description: "Steelseries arctic 5",
-      price: "ARS 80.000",
-      pictureUrl: "204333-1200-auto.webp",
-    },
-  ];
 
   const getProducts = () => {
-    return new Promise((res, rej) => {
-      setTimeout(() => {
-        return res(mock);
-      }, 2000);
-    });
-  };
+    try {
+      const response = await fetch(`http://localhost:3000/api.json`);
+      const dataJson = await response.json();
+      return dataJson;
+    } catch (err) {
+      throw console.log("Error to fecth data", err);
+    }
+  }
+  
   useEffect(async () => {
     const productos = await getProducts();
     const product = setProducts(productos);
