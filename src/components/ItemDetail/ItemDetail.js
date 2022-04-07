@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from "react";
-import {
-  Container,
-  Card,
-  Button,
-  CardActions,
-  useForkRef,
-} from "@mui/material";
+import React from "react";
+import { Container, Card, Button, CardActions } from "@mui/material";
 import { Figure } from "react-bootstrap";
 import ItemCount from "../ItemCount/ItemCount";
 import "./ItemDetail.css";
 import RatingItem from "./RatingItem";
+import { Link } from "react-router-dom";
 
-const ItemDetail = ({ product }) => {
-  {
-    console.log(product.pictureUrl);
-  }
+const ItemDetail = ({ product, onAdd, isAdded }) => {
   return (
     <>
       <Container maxWidth="sm" className="mt-4">
@@ -52,7 +44,18 @@ const ItemDetail = ({ product }) => {
                   })}
               </ul>
             </Container>
-            <ItemCount stock={10} name={product.title} initial={1} />
+            <Container className="link-to-cart">
+              {isAdded ? (
+                <Link to="/cart">Ir al Carrito</Link>
+              ) : (
+                <ItemCount
+                  stock={10}
+                  name={product.title}
+                  initial={1}
+                  onAdd={onAdd}
+                />
+              )}
+            </Container>
           </Card>
         </Container>
       </Container>

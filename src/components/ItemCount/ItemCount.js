@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./ItemCount.css";
 
-const ItemCount = (props) => {
-  const { stock, name, initial } = props;
+const ItemCount = (prop) => {
+  const { stock, name, initial, onAdd } = prop;
 
   let [count, setCount] = useState(initial);
 
@@ -31,7 +31,9 @@ const ItemCount = (props) => {
             +
           </button>
         </div>
-        <button className="btn btn-primary">Agregar</button>
+        <button className="btn btn-primary" onClick={() => onAdd(count)}>
+          Agregar
+        </button>
       </div>
     </>
   );

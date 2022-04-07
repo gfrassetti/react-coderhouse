@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
+  const [isAdded, setAdded] = useState(false);
 
   useEffect(async () => {
     const products = await getProducts();
@@ -25,10 +26,15 @@ const ItemDetailContainer = () => {
     }
   };
 
+  const onAdd = (count) => {
+    console.log(`Agregaste ${count} unidad/es de ${data.title} al carrito `);
+    setAdded(true);
+  };
+
   return (
     <>
       <div className="item-container-detail">
-        <ItemDetail product={data} />
+        <ItemDetail product={data} onAdd={onAdd} isAdded={isAdded} />
       </div>
     </>
   );
