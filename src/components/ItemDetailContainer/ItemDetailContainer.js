@@ -1,13 +1,20 @@
 import { useEffect, useState, React } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail.js";
+import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
+  const { id } = useParams();
   const [data, setData] = useState({});
 
   useEffect(async () => {
     const products = await getProducts();
-    setData(products[0]);
+    products.map((product) =>{
+      if (data.id == id) {
+        return setData(product)
+      }   
+    })
   }, []);
+
 
   const getProducts = async () => {
     try {

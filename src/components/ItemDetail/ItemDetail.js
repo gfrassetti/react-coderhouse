@@ -10,24 +10,8 @@ import { Figure } from "react-bootstrap";
 import ItemCount from "../ItemCount/ItemCount";
 import "./ItemDetail.css";
 import RatingItem from "./RatingItem";
-import { useParams } from "react-router-dom";
-import ApiJson from "http://localhost:3000/api.json";
 
-const ItemDetail = () => {
-  const { id } = useParams();
-  const [product, setProduct] = useState();
-
-  useEffect(() => {
-    filterProduct();
-  });
-
-  const filterProduct = () => {
-    return ApiJson.map((product) => {
-      if (product.id == id) {
-        return setProduct(product);
-      }
-    });
-  };
+const ItemDetail = ({product}) => {
 
   return (
     <>
