@@ -117,7 +117,7 @@ const Navbar = () => {
             ))}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Open Cart">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <CartWidget />
               </IconButton>
@@ -138,32 +138,48 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {cartProducts.map((cartProduct) => {
-                return (
-                  <MenuItem
-                    sx={{
-                      width: "100%",
-                      margin: 0,
-                      padding: 1,
-                      justifyContent: "space-around",
-                    }}
-                    key={cartProduct.id}
-                    className="shopping-cart-menu-item"
-                  >
-                    <div className="shopping-cart-img-container">
-                      <img src={`../images/${cartProduct.pictureUrl}`} />
-                    </div>
-                    <div className="shopping-cart-info-container">
-                      <p>{cartProduct.title}</p>
-                      <span>{cartProduct.price}</span>
-                    </div>
-                    <div className="shopping-cart-trash-icon">
-                      <DeleteIcon />
-                    </div>
-                  </MenuItem>
-                );
-              })}
+              {cartProducts.length !== 0 ? (
+                cartProducts.map((cartProduct) => {
+                  return (
+                    <MenuItem
+                      sx={{
+                        width: "100%",
+                        margin: 0,
+                        padding: 1,
+                        justifyContent: "space-around",
+                      }}
+                      key={cartProduct.id}
+                      className="shopping-cart-menu-item"
+                    >
+                      <div className="shopping-cart-img-container">
+                        <img src={`../images/${cartProduct.pictureUrl}`} />
+                      </div>
+                      <div className="shopping-cart-info-container">
+                        <p>{cartProduct.title}</p>
+                        <span>{cartProduct.price}</span>
+                      </div>
+                      <div className="shopping-cart-trash-icon">
+                        <DeleteIcon />
+                      </div>
+                    </MenuItem>
+                  );
+                })
+              ) : (
+                <Container className="empty-cart">
+                  <p>El carrito se encuentra vacio</p>
+                </Container>
+              )}
+              <Container>
+                <hr></hr>
+                <div className="shopping-cart-footer">
+                  <p>Total</p>
+                  <span>$0</span>
+                </div>
+              </Container>
             </Menu>
+          </Box>
+          <Box>
+            <span className="span-qnt">{cartProducts.length}</span>
           </Box>
         </Toolbar>
       </Container>

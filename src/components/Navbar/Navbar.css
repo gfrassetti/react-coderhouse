@@ -9,8 +9,15 @@
 }
 
 .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
-  width: 30%;
+  width: 25%;
   right: 0;
+  left: 1115px;
+}
+@media only screen and (max-width: 419px) {
+  .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+    width: 70%;
+    left: 90px;
+  }
 }
 
 .shopping-cart-info-container {
@@ -31,4 +38,19 @@
 
 .shopping-cart-img-container {
   width: 25%;
+}
+
+.shopping-cart-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.empty-cart {
+  text-align: center;
+}
+
+.span-qnt {
+  margin-left: 10px;
+  font-weight: 700;
+  color: black;
 }

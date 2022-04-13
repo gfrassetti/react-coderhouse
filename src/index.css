@@ -6,8 +6,9 @@ body {
 .cart-icon {
   margin-left: 10px;
   cursor: pointer;
+  color: white;
 }
 
 .cart-icon:hover {
-  color: yellow;
+  color: black;
 }
