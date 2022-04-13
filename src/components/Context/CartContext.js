@@ -11,7 +11,6 @@ const CartProvider = ({ children }) => {
     } else {
       setCartProducts((cartProducts) => [...cartProducts, product]);
       console.log("producto a agregar: ", product);
-      console.log(cartProducts);
     }
   };
 
