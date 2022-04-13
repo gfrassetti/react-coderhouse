@@ -123,7 +123,6 @@ const Navbar = () => {
               </IconButton>
             </Tooltip>
             <Menu
-              className="shopping-cart-menu"
               sx={{ mt: "45px", width: "100%" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -143,8 +142,9 @@ const Navbar = () => {
                 return (
                   <MenuItem
                     sx={{
-                      width: 1 / 1,
+                      width: "100%",
                       margin: 0,
+                      padding: 1,
                       justifyContent: "space-around",
                     }}
                     key={cartProduct.id}
@@ -160,7 +160,6 @@ const Navbar = () => {
                     <div className="shopping-cart-trash-icon">
                       <DeleteIcon />
                     </div>
-                    <hr />
                   </MenuItem>
                 );
               })}
