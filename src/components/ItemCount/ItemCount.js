@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./ItemCount.css";
 
 const ItemCount = (prop) => {
   const { stock, name, initial, onAdd } = prop;
+
 
   let [count, setCount] = useState(initial);
 

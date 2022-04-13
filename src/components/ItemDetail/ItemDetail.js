@@ -51,7 +51,7 @@ const ItemDetail = ({ product, onAdd, isAdded }) => {
                 <ItemCount
                   stock={10}
                   name={product.title}
-                  initial={1}
+                  initial={product.quantity}
                   onAdd={onAdd}
                 />
               )}

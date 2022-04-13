@@ -5,6 +5,7 @@
     "description": "View Sonic 27",
     "price": "ARS 60.000",
     "pictureUrl": "monitor.webp",
+    "quantity": 1,
     "details": [
       "Pantalla led de 27'",
       "Curvo",
@@ -20,13 +21,15 @@
     "title": "Teclado",
     "description": "Corsair Arpon",
     "price": "ARS 45.000",
-    "pictureUrl": "corsairk70.webp"
+    "pictureUrl": "corsairk70.webp",
+    "quantity": 1
   },
   {
     "id": 3,
     "title": "Auriculares",
     "description": "Steelseries arctic 5",
     "price": "ARS 80.000",
-    "pictureUrl": "204333-1200-auto.webp"
+    "pictureUrl": "204333-1200-auto.webp",
+    "quantity": 1
   }
 ]

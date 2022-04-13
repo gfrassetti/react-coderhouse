@@ -1,0 +1,30 @@
+.shopping-cart-img-container img {
+  width: 100%;
+}
+
+.shopping-cart-img-container {
+  width: 20%;
+  margin: 0;
+  padding: 0;
+}
+
+.shopping-cart-info-container {
+  display: flex;
+  justify-content: center;
+  width: 10%;
+  margin: 0;
+  padding: 0;
+}
+
+.shopping-cart-info-container p,
+span {
+  margin-right: 1%;
+  font-size: 10px;
+}
+
+.shopping-cart-trash-icon {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  width: 10%;
+}
