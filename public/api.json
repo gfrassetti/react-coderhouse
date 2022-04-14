@@ -22,7 +22,15 @@
     "description": "Corsair Arpon",
     "price": "ARS 45.000",
     "pictureUrl": "corsairk70.webp",
-    "quantity": 1
+    "quantity": 1,
+    "details": [
+      "Ergonómico y apto para diversos usos.",
+      "Tiene reposa muñeca",
+      "Resiste a salpicaduras.",
+      "Contiene teclado numérico.",
+      "Función antighosting incorporada.",
+      "Tipo de teclado: mecánico."
+    ]
   },
   {
     "id": 3,
@@ -30,6 +38,13 @@
     "description": "Steelseries arctic 5",
     "price": "ARS 80.000",
     "pictureUrl": "204333-1200-auto.webp",
-    "quantity": 1
+    "quantity": 1,
+    "details": [
+      "Con micrófono incorporado.",
+      "Tipo de conector: Jack 3.5 mm.",
+      "El largo del cable es de 3 m.",
+      "Sonido superior y sin límites.",
+      "Cómodos y prácticos."
+    ]
   }
 ]

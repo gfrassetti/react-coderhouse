@@ -1,17 +1,19 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import "./ItemCount.css";
 
 const ItemCount = (prop) => {
   const { stock, name, initial, onAdd } = prop;
 
   let [count, setCount] = useState(initial);
-  const addtItem = () => {
+  const addtItem = (e) => {
+    e.stopPropagation();
     count < stock
       ? setCount(count + 1)
       : console.log(`El stock es de ${stock}`);
   };
 
-  const removeItem = () => {
+  const removeItem = (e) => {
+    e.stopPropagation();
     count > initial
       ? setCount(count - 1)
       : console.log(`El stock minimo es de 1 unidad`);
@@ -30,7 +32,7 @@ const ItemCount = (prop) => {
             +
           </button>
         </div>
-        <button className="btn btn-primary" onClick={() => onAdd(count)}>
+        <button className="btn btn-primary" onClick={(e) => onAdd(e, count)}>
           Agregar
         </button>
       </div>

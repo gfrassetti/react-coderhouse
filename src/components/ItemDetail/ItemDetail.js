@@ -46,7 +46,7 @@ const ItemDetail = ({ product, onAdd, isAdded }) => {
             </Container>
             <Container className="link-to-cart">
               {isAdded ? (
-                <Link to="/cart">Ir al Carrito</Link>
+                <Link to="/cart">Ir al Checkout</Link>
               ) : (
                 <ItemCount
                   stock={10}

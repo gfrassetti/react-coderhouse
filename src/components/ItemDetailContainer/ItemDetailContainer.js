@@ -1,13 +1,16 @@
 import { useEffect, useState, React } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail.js";
 import { useParams } from "react-router-dom";
+import Loader from "../Loader/Loader.js";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [isAdded, setAdded] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(async () => {
+    setLoading(true);
     const products = await getProducts();
     products.map((product) => {
       if (product.id == id) {
@@ -23,19 +26,25 @@ const ItemDetailContainer = () => {
       return dataJson;
     } catch (err) {
       throw console.log("Error to fecth data", err);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const onAdd = (count) => {
+  const onAdd = (e, count) => {
+    console.log(e);
+    e.stopPropagation();
     console.log(`Agregaste ${count} unidad/es de ${data.title} al carrito `);
     setAdded(true);
   };
 
   return (
     <>
-      <div className="item-container-detail">
+      {Object.keys(data).length !== 0 ? (
         <ItemDetail product={data} onAdd={onAdd} isAdded={isAdded} />
-      </div>
+      ) : (
+        <Loader />
+      )}
     </>
   );
 };
