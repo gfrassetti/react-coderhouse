@@ -6,18 +6,19 @@ import CartContext from "../Context/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
 import { Container } from "@mui/material";
 
-const Item = ({ data, onAdd, isAdded }) => {
+const Item = ({ data }) => {
   /* redirect */
   const navigate = useNavigate();
   const { id, title, description, price, pictureUrl, quantity } = data;
-  const { cartProducts, addProductToCart } = useContext(CartContext);
+  const { addProductToCart } = useContext(CartContext);
 
   const viewDetail = () => {
     navigate(`/products/${id}`);
   };
 
-  const addToCart = () => {
-    /* fx */
+  const onAdd = (e, count) => {
+    e.stopPropagation();
+    console.log(`Agregaste ${count} unidad/es de ${data.title} al carrito `);
     addProductToCart(data);
   };
 
@@ -38,16 +39,7 @@ const Item = ({ data, onAdd, isAdded }) => {
           <p>{price}</p>
         </div>
         <Container className="link-to-cart">
-          {isAdded ? (
-            <Link to="/cart">Ir al Checkout</Link>
-          ) : (
-            <ItemCount
-              stock={10}
-              name={data.title}
-              initial={data.quantity}
-              onAdd={onAdd}
-            />
-          )}
+          <ItemCount stock={10} name={data.title} initial={1} onAdd={onAdd} />
         </Container>
       </div>
     </>

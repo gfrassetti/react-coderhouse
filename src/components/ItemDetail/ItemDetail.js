@@ -6,7 +6,7 @@ import "./ItemDetail.css";
 import RatingItem from "./RatingItem";
 import { Link } from "react-router-dom";
 
-const ItemDetail = ({ product, onAdd, isAdded }) => {
+const ItemDetail = ({ product, onAdd }) => {
   return (
     <>
       <Container maxWidth="sm" className="mt-4">
@@ -45,16 +45,12 @@ const ItemDetail = ({ product, onAdd, isAdded }) => {
               </ul>
             </Container>
             <Container className="link-to-cart">
-              {isAdded ? (
-                <Link to="/cart">Ir al Checkout</Link>
-              ) : (
-                <ItemCount
-                  stock={10}
-                  name={product.title}
-                  initial={product.quantity}
-                  onAdd={onAdd}
-                />
-              )}
+              <ItemCount
+                stock={10}
+                name={product.title}
+                initial={product.quantity}
+                onAdd={onAdd}
+              />
             </Container>
           </Card>
         </Container>

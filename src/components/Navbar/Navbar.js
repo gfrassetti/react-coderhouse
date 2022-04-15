@@ -173,7 +173,13 @@ const Navbar = () => {
                 <hr></hr>
                 <div className="shopping-cart-footer">
                   <p>Total</p>
-                  <span>$0</span>
+                  <span></span>
+                  {cartProducts.length !== 0 && (
+                    <button className="btn btn-primary">
+                      {" "}
+                      <Link to="/cart">Checkout</Link>
+                    </button>
+                  )}
                 </div>
               </Container>
             </Menu>
