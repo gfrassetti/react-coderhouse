@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader.js";
 import CartContext from "../Context/CartContext";
 
+
 const ItemDetailContainer = () => {
   const { addProductToCart } = useContext(CartContext);
   const { id } = useParams();

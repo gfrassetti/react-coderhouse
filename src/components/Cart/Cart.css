@@ -1,3 +1,8 @@
 .cart-container {
   text-align: center;
+  margin-bottom: 15px;
+}
+.cart-box{
+    display: flex;
+    justify-content: space-around;
 }
