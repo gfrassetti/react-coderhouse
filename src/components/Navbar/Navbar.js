@@ -23,7 +23,7 @@ import "./Navbar.css";
 const Navbar = () => {
   const pages = ["Home", "Products", "Contact"];
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
-  const { cartProducts } = useContext(CartContext);
+  const { cartProducts, deleteProduct, totalPrice } = useContext(CartContext);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const handleOpenNavMenu = (event) => {
@@ -158,7 +158,10 @@ const Navbar = () => {
                         <p>{cartProduct.title}</p>
                         <span>{cartProduct.price}</span>
                       </div>
-                      <div className="shopping-cart-trash-icon">
+                      <div
+                        className="shopping-cart-trash-icon"
+                        onClick={() => deleteProduct(cartProduct)}
+                      >
                         <DeleteIcon />
                       </div>
                     </MenuItem>
@@ -172,8 +175,8 @@ const Navbar = () => {
               <Container>
                 <hr></hr>
                 <div className="shopping-cart-footer">
-                  <p>Total</p>
-                  <span></span>
+                  <p>Total:</p>
+                  <span>{totalPrice}</span>
                   {cartProducts.length !== 0 && (
                     <button className="btn btn-primary">
                       {" "}

@@ -55,9 +55,7 @@ export default function Cart() {
                         {cartProduct.title}
                       </Typography>
                       <Typography variant="body2" gutterBottom>
-                        {cartProduct.details.map((detail) => {
-                          return detail;
-                        })}
+                        {cartProduct.details[0]}
                       </Typography>
                       <Typography variant="body2" color="white">
                         ID: {cartProduct.id}
@@ -65,7 +63,9 @@ export default function Cart() {
                     </Grid>
                     <Grid item>
                       <Typography sx={{ cursor: "pointer" }} variant="body2">
-                        <DeleteIcon />
+                        <DeleteIcon
+                          onClick={() => deleteProduct(cartProduct)}
+                        />
                       </Typography>
                     </Grid>
                   </Grid>

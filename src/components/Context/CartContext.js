@@ -11,8 +11,6 @@ const CartProvider = ({ children }) => {
       console.log("Item ya agregado");
     } else {
       setCartProducts((cartProducts) => [...cartProducts, product]);
-      setTotalPrice(product.price + product.price);
-      console.log("producto a agregar: ", product);
     }
   };
   const deleteProduct = (product) => {
