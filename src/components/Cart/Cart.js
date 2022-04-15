@@ -55,7 +55,7 @@ export default function Cart() {
                         {cartProduct.title}
                       </Typography>
                       <Typography variant="body2" gutterBottom>
-                        {cartProduct.details[0]}
+                        Cantidad: {cartProduct.quantity}
                       </Typography>
                       <Typography variant="body2" color="white">
                         ID: {cartProduct.id}
@@ -71,7 +71,7 @@ export default function Cart() {
                   </Grid>
                   <Grid item>
                     <Typography variant="subtitle1" component="div">
-                      {cartProduct.price}
+                      ${cartProduct.price}
                     </Typography>
                   </Grid>
                 </Grid>
@@ -85,7 +85,7 @@ export default function Cart() {
         <div>
           <p>Total:</p>
           <hr></hr>
-          <span>{totalPrice}</span>
+          <span>${totalPrice}</span>
         </div>
       </Box>
     </>

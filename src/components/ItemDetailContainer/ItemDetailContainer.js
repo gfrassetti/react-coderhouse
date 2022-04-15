@@ -4,12 +4,10 @@ import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader.js";
 import CartContext from "../Context/CartContext";
 
-
 const ItemDetailContainer = () => {
   const { addProductToCart } = useContext(CartContext);
   const { id } = useParams();
   const [data, setData] = useState({});
-  const [isAdded, setAdded] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(async () => {
@@ -36,15 +34,13 @@ const ItemDetailContainer = () => {
 
   const onAdd = (e, count) => {
     e.stopPropagation();
-    console.log(`Agregaste ${count} unidad/es de ${data.title} al carrito `);
-    setAdded(true);
-    addProductToCart(data);
+    addProductToCart({ ...data, quantity: count });
   };
 
   return (
     <>
       {Object.keys(data).length !== 0 ? (
-        <ItemDetail product={data} onAdd={onAdd} isAdded={isAdded} />
+        <ItemDetail product={data} onAdd={onAdd} />
       ) : (
         <Loader />
       )}
