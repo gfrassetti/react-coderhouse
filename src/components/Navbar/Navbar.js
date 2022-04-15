@@ -19,6 +19,7 @@ import { useContext } from "react";
 import { CarRental } from "@mui/icons-material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./Navbar.css";
+import ItemCount from "../ItemCount/ItemCount";
 
 const Navbar = () => {
   const pages = ["Home", "Products", "Contact"];
@@ -156,7 +157,8 @@ const Navbar = () => {
                       </div>
                       <div className="shopping-cart-info-container">
                         <p>{cartProduct.title}</p>
-                        <span>{cartProduct.price}</span>
+                        <span>${cartProduct.price}</span>
+                        <span>x{cartProduct.quantity}</span>
                       </div>
                       <div
                         className="shopping-cart-trash-icon"
@@ -176,7 +178,11 @@ const Navbar = () => {
                 <hr></hr>
                 <div className="shopping-cart-footer">
                   <p>Total:</p>
-                  <span>{totalPrice}</span>
+                  {cartProducts.length === 0 ? (
+                    <span>$0</span>
+                  ) : (
+                    <span>${totalPrice}</span>
+                  )}
                   {cartProducts.length !== 0 && (
                     <button className="btn btn-primary">
                       {" "}

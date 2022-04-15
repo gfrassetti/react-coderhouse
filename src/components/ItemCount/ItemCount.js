@@ -5,6 +5,7 @@ const ItemCount = (prop) => {
   const { stock, name, initial, onAdd } = prop;
 
   let [count, setCount] = useState(initial);
+
   const addtItem = (e) => {
     e.stopPropagation();
     count < stock

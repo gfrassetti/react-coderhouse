@@ -3,9 +3,8 @@
     "id": 1,
     "title": "Monitor",
     "description": "View Sonic 27",
-    "price": "ARS 60.000",
+    "price": 60000,
     "pictureUrl": "monitor.webp",
-    "quantity": 1,
     "details": [
       "Pantalla led de 27'",
       "Curvo",
@@ -20,9 +19,8 @@
     "id": 2,
     "title": "Teclado",
     "description": "Corsair Arpon",
-    "price": "ARS 45.000",
+    "price": 45000,
     "pictureUrl": "corsairk70.webp",
-    "quantity": 1,
     "details": [
       "Ergonómico y apto para diversos usos.",
       "Tiene reposa muñeca",
@@ -36,9 +34,8 @@
     "id": 3,
     "title": "Auriculares",
     "description": "Steelseries arctic 5",
-    "price": "ARS 80.000",
+    "price": 80000,
     "pictureUrl": "204333-1200-auto.webp",
-    "quantity": 1,
     "details": [
       "Con micrófono incorporado.",
       "Tipo de conector: Jack 3.5 mm.",

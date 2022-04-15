@@ -48,7 +48,7 @@ const ItemDetail = ({ product, onAdd }) => {
               <ItemCount
                 stock={10}
                 name={product.title}
-                initial={product.quantity}
+                initial={1}
                 onAdd={onAdd}
               />
             </Container>

@@ -19,7 +19,7 @@ const Item = ({ data }) => {
   const onAdd = (e, count) => {
     e.stopPropagation();
     console.log(`Agregaste ${count} unidad/es de ${data.title} al carrito `);
-    addProductToCart(data);
+    addProductToCart({...data, quantity: count});
   };
 
   return (
