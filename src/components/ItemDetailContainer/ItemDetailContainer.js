@@ -3,34 +3,34 @@ import ItemDetail from "../ItemDetail/ItemDetail.js";
 import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader.js";
 import CartContext from "../Context/CartContext";
+import { getDoc, doc } from "firebase/firestore";
+import db from "../../firebase";
 
 const ItemDetailContainer = () => {
   const { addProductToCart } = useContext(CartContext);
   const { id } = useParams();
   const [data, setData] = useState({});
-  const [loading, setLoading] = useState(false);
 
-  useEffect(async () => {
-    setLoading(true);
-    const products = await getProducts();
-    products.map((product) => {
-      if (product.id == id) {
-        return setData(product);
-      }
-    });
-  }, []);
-
-  const getProducts = async () => {
+  const getProduct = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api.json`);
-      const dataJson = await response.json();
-      return dataJson;
+      const docRef = doc(db, "products", id);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        let product = docSnap.data();
+        product.id = docSnap.id;
+        setData(product);
+      } else {
+        console.log("no such document");
+      }
     } catch (err) {
-      throw console.log("Error to fecth data", err);
-    } finally {
-      setLoading(false);
+      throw console.log("error to fecth db: ", err);
     }
   };
+
+  useEffect(() => {
+    getProduct();
+  }, [id]);
 
   const onAdd = (e, count) => {
     e.stopPropagation();

@@ -5,13 +5,18 @@
   cursor: pointer;
 }
 
+.card-item:hover {
+  transform: scale(1.01);
+  box-shadow: 5px 10px 8px #888888;
+}
+
 .product-image {
   width: 100%;
   object-fit: contain;
   height: 200px;
 }
 
-.btn-primary a{
+.btn-primary a {
   color: white;
   text-decoration: none;
 }

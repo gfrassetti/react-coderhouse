@@ -87,7 +87,7 @@ const Navbar = () => {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link to={`/${page}`}>{page}</Link>
+                    <Link className="link-to" to={`/${page}`}>{page}</Link>
                   </Typography>
                 </MenuItem>
               ))}

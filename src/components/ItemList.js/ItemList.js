@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from "react";
 import Item from "../Item/Item";
 import "./ItemList.css";
+import { collection, getDocs } from "firebase/firestore";
+import db from "../../firebase";
+import { async } from "@firebase/util";
 
 const ItemList = () => {
   const [products, setProducts] = useState([]);
 
-
   const getProducts = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api.json`);
-      const dataJson = await response.json();
-      return dataJson;
+      const connection = collection(db, "products");
+      const productsSnapshot = await getDocs(connection);
+      const productList = productsSnapshot.docs.map((doc) => {
+        let product = doc.data();
+        product.id = doc.id;
+        return product;
+      });
+      return productList;
     } catch (err) {
-      throw console.log("Error to fecth data", err);
+      throw console.log("error to fecth db: ", err);
     }
-  }
-  
+  };
+
   useEffect(async () => {
     const productos = await getProducts();
-    const product = setProducts(productos);
+    setProducts(productos);
   }, []);
 
   return (

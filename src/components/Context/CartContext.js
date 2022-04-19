@@ -5,13 +5,16 @@ const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  console.log(totalPrice);
 
   const addProductToCart = (product) => {
     if (cartProducts.find((cartProduct) => cartProduct.id === product.id)) {
-      cartProducts.map((cartProduct) => {
-        cartProduct.quantity++;
+      const newArray = cartProducts.map((cartProduct) => {
+        if (cartProduct.id === product.id) {
+          cartProduct.quantity = cartProduct.quantity + product.quantity;
+        }
+        return cartProduct;
       });
+      setCartProducts(newArray);
     } else {
       setCartProducts((cartProducts) => [...cartProducts, product]);
     }

@@ -9,7 +9,7 @@ import { Container } from "@mui/material";
 const Item = ({ data }) => {
   /* redirect */
   const navigate = useNavigate();
-  const { id, title, description, price, pictureUrl, quantity } = data;
+  const { id, title, description, price, pictureUrl } = data;
   const { addProductToCart } = useContext(CartContext);
 
   const viewDetail = () => {
@@ -19,7 +19,7 @@ const Item = ({ data }) => {
   const onAdd = (e, count) => {
     e.stopPropagation();
     console.log(`Agregaste ${count} unidad/es de ${data.title} al carrito `);
-    addProductToCart({...data, quantity: count});
+    addProductToCart({ ...data, quantity: count });
   };
 
   return (
@@ -36,7 +36,7 @@ const Item = ({ data }) => {
         <div>
           <h3>{title}</h3>
           <p>{description}</p>
-          <p>{price}</p>
+          <p>${price}</p>
         </div>
         <Container className="link-to-cart">
           <ItemCount stock={10} name={data.title} initial={1} onAdd={onAdd} />
