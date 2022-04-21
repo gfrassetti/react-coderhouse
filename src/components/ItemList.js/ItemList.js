@@ -4,6 +4,7 @@ import "./ItemList.css";
 import { collection, getDocs } from "firebase/firestore";
 import db from "../../firebase";
 import { async } from "@firebase/util";
+import Loader from "../Loader/Loader";
 
 const ItemList = () => {
   const [products, setProducts] = useState([]);
@@ -30,10 +31,14 @@ const ItemList = () => {
 
   return (
     <div className="items-container row">
-      {products.map((product) => {
-        const { id } = product;
-        return <Item data={product} key={id} />;
-      })}
+      {products.length !== 0 ? (
+        products.map((product) => {
+          const { id } = product;
+          return <Item data={product} key={id} />;
+        })
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };

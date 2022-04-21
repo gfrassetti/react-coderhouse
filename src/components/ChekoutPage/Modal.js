@@ -1,6 +1,6 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
+
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -39,7 +39,6 @@ export default function Modal() {
   };
 
   const handleChange = (e) => {
-    console.log(e.target);
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -52,7 +51,7 @@ export default function Modal() {
   };
   return (
     <div>
-      {console.log("order: ", order)}
+      {console.log(order)}
       <Button variant="outlined" onClick={handleClickOpen}>
         COMPLETAR COMPRA
       </Button>
@@ -68,7 +67,6 @@ export default function Modal() {
                 placeholder="Enter name"
                 name="name"
                 onChange={handleChange}
-                value={formData}
                 required
               />
             </Form.Group>
