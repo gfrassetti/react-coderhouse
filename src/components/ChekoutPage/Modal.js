@@ -17,7 +17,6 @@ export default function Modal() {
     phone: "",
     email: "",
   });
-
   const [order, setOrder] = React.useState({
     buyer: formData,
     items: cartProducts.map((cartProduct) => {
@@ -51,7 +50,7 @@ export default function Modal() {
   };
   return (
     <div>
-      {console.log(order)}
+      {console.log("order", order)}
       <Button variant="outlined" onClick={handleClickOpen}>
         COMPLETAR COMPRA
       </Button>
@@ -67,6 +66,7 @@ export default function Modal() {
                 placeholder="Enter name"
                 name="name"
                 onChange={handleChange}
+                value={formData.name}
                 required
               />
             </Form.Group>
@@ -78,7 +78,7 @@ export default function Modal() {
                 placeholder="Celphone"
                 name="phone"
                 onChange={handleChange}
-                value={formData}
+                value={formData.phone}
                 required
               />
             </Form.Group>
@@ -89,21 +89,21 @@ export default function Modal() {
                 placeholder="Enter email"
                 name="email"
                 onChange={handleChange}
-                value={formData}
+                value={formData.email}
                 required
               />
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text>
             </Form.Group>
+            <DialogActions>
+              <Button onClick={handleClose}>Cancelar</Button>
+              <Button type="submit" onClick={handleClose}>
+                Enviar
+              </Button>
+            </DialogActions>
           </Form>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancelar</Button>
-          <Button type="submit" onClick={handleClose}>
-            Enviar
-          </Button>
-        </DialogActions>
       </Dialog>
     </div>
   );
