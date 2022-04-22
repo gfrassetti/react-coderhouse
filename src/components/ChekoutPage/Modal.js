@@ -8,10 +8,14 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Form } from "react-bootstrap";
 import CartContext from "../Context/CartContext";
+import db from "../../firebase";
+import { addDoc, collection } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 export default function Modal() {
   const [open, setOpen] = React.useState(false);
-  const { cartProducts, totalPrice } = React.useContext(CartContext);
+  let { cartProducts, totalPrice, setCartProducts } =
+    React.useContext(CartContext);
   const [formData, setFormData] = React.useState({
     name: "",
     phone: "",
@@ -28,6 +32,8 @@ export default function Modal() {
     }),
     total: totalPrice,
   });
+  const redirect = useNavigate();
+  const [successOrder, setSuccessOrder] = React.useState();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -46,65 +52,79 @@ export default function Modal() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setOrder({ ...order, buyer: formData });
+    let prevOrder = { ...order, buyer: formData };
+    setOrder(prevOrder);
+    pushOrder(prevOrder);
   };
+
+  const pushOrder = async (prevOrder) => {
+    const orderFirebase = collection(db, "orders");
+    const orderDoc = await addDoc(orderFirebase, prevOrder);
+    console.log("Orden generada: ", orderDoc.id);
+    setSuccessOrder(orderDoc.id);
+    setTimeout(() => {
+      redirect(`/products`);
+      setCartProducts([]);
+    }, 2000);
+  };
+
   return (
-    <div>
-      {console.log("order", order)}
+    <>
       <Button variant="outlined" onClick={handleClickOpen}>
         COMPLETAR COMPRA
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Complete Order</DialogTitle>
-        <DialogContent>
-          <DialogContentText>Form Checkout</DialogContentText>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Nombre</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter name"
-                name="name"
-                onChange={handleChange}
-                value={formData.name}
-                required
-              />
-            </Form.Group>
+        {successOrder ? (
+          <DialogTitle>{`Orden generada correctamente!: ${successOrder}`}</DialogTitle>
+        ) : (
+          <DialogContent>
+            <DialogContentText>Form Checkout</DialogContentText>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Nombre</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter name"
+                  name="name"
+                  onChange={handleChange}
+                  value={formData.name}
+                  required
+                />
+              </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Telefono</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Celphone"
-                name="phone"
-                onChange={handleChange}
-                value={formData.phone}
-                required
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                name="email"
-                onChange={handleChange}
-                value={formData.email}
-                required
-              />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
-            <DialogActions>
-              <Button onClick={handleClose}>Cancelar</Button>
-              <Button type="submit" onClick={handleClose}>
-                Enviar
-              </Button>
-            </DialogActions>
-          </Form>
-        </DialogContent>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Telefono</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Celphone"
+                  name="phone"
+                  onChange={handleChange}
+                  value={formData.phone}
+                  required
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  name="email"
+                  onChange={handleChange}
+                  value={formData.email}
+                  required
+                />
+                <Form.Text className="text-muted">
+                  We'll never share your email with anyone else.
+                </Form.Text>
+              </Form.Group>
+              <DialogActions>
+                <Button onClick={handleClose}>Cancelar</Button>
+                <Button type="submit">Enviar</Button>
+              </DialogActions>
+            </Form>
+          </DialogContent>
+        )}
       </Dialog>
-    </div>
+    </>
   );
 }

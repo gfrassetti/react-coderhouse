@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { Alert } from "@mui/material";
 
 const CartContext = createContext();
 
@@ -40,6 +41,7 @@ const CartProvider = ({ children }) => {
     addProductToCart,
     totalPrice,
     deleteProduct,
+    setCartProducts,
   };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
