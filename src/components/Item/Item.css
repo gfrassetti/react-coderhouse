@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   cursor: pointer;
+  margin: 0 10px;
 }
 
 .card-item:hover {

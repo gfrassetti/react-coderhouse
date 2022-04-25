@@ -40,16 +40,20 @@ const ItemList = () => {
   }, [category]);
 
   return (
-    <div className="items-container row">
-      {products.length !== 0 ? (
-        products.map((product) => {
-          const { id } = product;
-          return <Item data={product} key={id} />;
-        })
-      ) : (
-        <Loader />
-      )}
-    </div>
+    <>
+      {category && <h1 className="h1-category">{category}</h1>}
+      <hr />
+      <div className="items-container row">
+        {products.length !== 0 ? (
+          products.map((product) => {
+            const { id } = product;
+            return <Item data={product} key={id} />;
+          })
+        ) : (
+          <Loader />
+        )}
+      </div>
+    </>
   );
 };
 
