@@ -13,7 +13,7 @@ const Item = ({ data }) => {
   const { addProductToCart } = useContext(CartContext);
 
   const viewDetail = () => {
-    navigate(`/products/${id}`);
+    navigate(`/detail/${id}`);
   };
 
   const onAdd = (e, count) => {
@@ -30,7 +30,7 @@ const Item = ({ data }) => {
       >
         <img
           className="product-image"
-          src={`./images/${pictureUrl}`}
+          src={`../images/${pictureUrl}`}
           alt={pictureUrl}
         ></img>
         <div>
@@ -39,7 +39,7 @@ const Item = ({ data }) => {
           <p>${price}</p>
         </div>
         <Container className="link-to-cart">
-          <ItemCount stock={10} name={data.title} initial={1} onAdd={onAdd} />
+          <ItemCount stock={10} name={title} initial={1} onAdd={onAdd} />
         </Container>
       </div>
     </>

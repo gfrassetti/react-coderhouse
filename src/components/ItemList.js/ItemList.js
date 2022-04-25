@@ -5,9 +5,12 @@ import { collection, getDocs } from "firebase/firestore";
 import db from "../../firebase";
 import { async } from "@firebase/util";
 import Loader from "../Loader/Loader";
+import { useParams } from "react-router-dom";
 
 const ItemList = () => {
   const [products, setProducts] = useState([]);
+
+  const { category } = useParams();
 
   const getProducts = async () => {
     try {
@@ -24,10 +27,17 @@ const ItemList = () => {
     }
   };
 
+  const filterByCategory = (array, category) => {
+    return array.map((product, i) => {
+      product.category === category &&
+        setProducts((products) => [...products, product]);
+    });
+  };
+
   useEffect(async () => {
     const productos = await getProducts();
-    setProducts(productos);
-  }, []);
+    category ? filterByCategory(productos, category) : setProducts(productos);
+  }, [category]);
 
   return (
     <div className="items-container row">

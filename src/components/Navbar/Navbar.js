@@ -8,7 +8,6 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
@@ -16,14 +15,12 @@ import CartWidget from "../CartWidget/CartWidget";
 import { Link } from "react-router-dom";
 import CartContext from "../Context/CartContext";
 import { useContext } from "react";
-import { CarRental } from "@mui/icons-material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./Navbar.css";
-import ItemCount from "../ItemCount/ItemCount";
+import { Dropdown, SplitButton } from "react-bootstrap";
 
 const Navbar = () => {
-  const pages = ["Home", "Products", "Contact"];
-  const settings = ["Profile", "Account", "Dashboard", "Logout"];
+  const pages = ["home", "contact"];
   const { cartProducts, deleteProduct, totalPrice } = useContext(CartContext);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -87,7 +84,9 @@ const Navbar = () => {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link className="link-to" to={`/${page}`}>{page}</Link>
+                    <Link className="link-to" to={`/${page}`}>
+                      {page}
+                    </Link>
                   </Typography>
                 </MenuItem>
               ))}
@@ -116,6 +115,19 @@ const Navbar = () => {
                 </Link>
               </Button>
             ))}
+            <SplitButton
+              variant="outline-secondary"
+              title="PRODUCTS"
+              id="segmented-button-dropdown-1"
+              href={"/products"}
+            >
+              <Dropdown.Item href="/products/monitores">
+                Monitores
+              </Dropdown.Item>
+              <Dropdown.Item href="/products/perifericos">
+                Perisfericos
+              </Dropdown.Item>
+            </SplitButton>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open Cart">

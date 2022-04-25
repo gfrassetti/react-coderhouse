@@ -65,3 +65,27 @@ button {
 .link-to {
   padding: 10px 10px;
 }
+
+#segmented-button-dropdown-1 {
+  background-color: #1976d2;
+  color: white;
+}
+#root > div > header > div > div > div.MuiBox-root.css-1t6c9ts > div > a {
+  color: white;
+  border: 0;
+}
+
+.dropdown,
+.btn-group {
+  align-items: center;
+  border: 0;
+}
+
+#segmented-button-dropdown-1 {
+  border: 0;
+}
+
+#segmented-button-dropdown-1,
+#root > div > header > div > div > div.MuiBox-root.css-1t6c9ts > div > a:hover {
+  background-color: transparent;
+}

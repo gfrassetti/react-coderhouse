@@ -22,7 +22,6 @@ const Img = styled("img")({
 export default function Cart() {
   const { cartProducts, totalPrice, deleteProduct } = useContext(CartContext);
 
-  const addOrder = () => {};
 
   return (
     <>
