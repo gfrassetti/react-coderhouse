@@ -11,6 +11,7 @@ import CartContext from "../Context/CartContext";
 import { Box } from "@mui/system";
 import { Button } from "react-bootstrap";
 import Modal from "../ChekoutPage/Modal";
+import { Link } from "react-router-dom";
 
 const Img = styled("img")({
   margin: "auto",
@@ -21,7 +22,6 @@ const Img = styled("img")({
 
 export default function Cart() {
   const { cartProducts, totalPrice, deleteProduct } = useContext(CartContext);
-
 
   return (
     <>
@@ -91,8 +91,10 @@ export default function Cart() {
       <hr></hr>
       <Box className="cart-box container">
         <div>
-          <Button variant="info" href="/products" size="sm">
-            CONTINUAR COMPRA
+          <Button variant="info" size="sm">
+            <Link className="link" to={"/products"}>
+              CONTINUAR COMPRA
+            </Link>
           </Button>
         </div>
         <div className="card-footer cart-total">
