@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import CartContext from "../Context/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
 import { Container } from "@mui/material";
+import Toast from "../Toast/Toast";
 
 const Item = ({ data }) => {
   /* redirect */
@@ -18,7 +19,6 @@ const Item = ({ data }) => {
 
   const onAdd = (e, count) => {
     e.stopPropagation();
-    console.log(`Agregaste ${count} unidad/es de ${data.title} al carrito `);
     addProductToCart({ ...data, quantity: count });
   };
 

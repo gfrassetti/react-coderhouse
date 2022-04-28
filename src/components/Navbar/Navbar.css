@@ -89,3 +89,6 @@ button {
 #root > div > header > div > div > div.MuiBox-root.css-1t6c9ts > div > a:hover {
   background-color: transparent;
 }
+#root > div > header > div > div > div.MuiBox-root.css-1t6c9ts > div > a {
+  font-size: 0.875rem;
+}

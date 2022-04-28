@@ -1,10 +1,11 @@
 import { createContext, useEffect, useState } from "react";
-import { Alert } from "@mui/material";
 
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [cartProducts, setCartProducts] = useState([]);
+  const [cartProducts, setCartProducts] = useState(
+    JSON.parse(localStorage.getItem("products")) || []
+  );
   const [totalPrice, setTotalPrice] = useState(0);
 
   const addProductToCart = (product) => {
@@ -18,6 +19,10 @@ const CartProvider = ({ children }) => {
       setCartProducts(newArray);
     } else {
       setCartProducts((cartProducts) => [...cartProducts, product]);
+      localStorage.setItem(
+        "products",
+        JSON.stringify([...cartProducts, product])
+      );
     }
   };
   const deleteProduct = (product) => {

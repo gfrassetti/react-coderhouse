@@ -8,7 +8,13 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function Toast(open) {
+export default function CustomizedSnackbars() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
