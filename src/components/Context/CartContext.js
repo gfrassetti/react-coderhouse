@@ -4,7 +4,9 @@ const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState(
-    JSON.parse(localStorage.getItem("products")) || []
+    localStorage.getItem("products")
+      ? JSON.parse(localStorage.getItem("products"))
+      : []
   );
   const [totalPrice, setTotalPrice] = useState(0);
 
