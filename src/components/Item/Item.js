@@ -17,9 +17,16 @@ const Item = ({ data }) => {
     navigate(`/detail/${id}`);
   };
 
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
   const onAdd = (e, count) => {
     e.stopPropagation();
     addProductToCart({ ...data, quantity: count });
+    handleClick();
   };
 
   return (

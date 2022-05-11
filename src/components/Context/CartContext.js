@@ -31,6 +31,12 @@ const CartProvider = ({ children }) => {
     setCartProducts(
       cartProducts.filter((cartProduct) => cartProduct.id !== product.id)
     );
+    localStorage.setItem(
+      "products",
+      JSON.stringify(
+        cartProducts.filter((cartProduct) => cartProduct.id !== product.id)
+      )
+    );
   };
 
   useEffect(() => {

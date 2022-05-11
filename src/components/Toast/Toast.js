@@ -3,16 +3,26 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import { ClassNames } from "@emotion/react";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function CustomizedSnackbars() {
+export default function Toast({ name }) {
   const [open, setOpen] = React.useState(false);
+  const [state, setState] = React.useState({
+    open: false,
+    vertical: "bottom",
+    horizontal: "rigth",
+  });
 
-  const handleClick = () => {
+  const { vertical, horizontal } = state;
+
+  const handleClick = (e, newState) => {
     setOpen(true);
+    e.stopPropagation();
+    setState({ open: true, ...newState });
   };
 
   const handleClose = (event, reason) => {
@@ -25,18 +35,27 @@ export default function CustomizedSnackbars() {
 
   return (
     <Stack spacing={2} sx={{ width: "100%" }}>
-      <Button variant="outlined" onClick={handleClick}>
-        Open success snackbar
+      <Button
+        variant="contained"
+        onClick={(e) =>
+          handleClick(e, {
+            vertical: "bottom",
+            horizontal: "right",
+          })
+        }
+      >
+        Agregar
       </Button>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          This is a success message!
+          {name} agregado al carrito!
         </Alert>
       </Snackbar>
-      <Alert severity="error">This is an error message!</Alert>
-      <Alert severity="warning">This is a warning message!</Alert>
-      <Alert severity="info">This is an information message!</Alert>
-      <Alert severity="success">This is a success message!</Alert>
     </Stack>
   );
 }
