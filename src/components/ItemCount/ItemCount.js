@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./ItemCount.css";
-import Toast from "../Toast/Toast";
 
 const ItemCount = (prop) => {
   const { stock, name, initial, onAdd } = prop;
@@ -34,11 +33,9 @@ const ItemCount = (prop) => {
             +
           </button>
         </div>
-        <Toast
-          className="btn btn-primary"
-          onClick={(e) => onAdd(e, count)}
-          name={name}
-        />
+        <button className="btn btn-primary" onClick={(e) => onAdd(e, count)}>
+          Agregar
+        </button>
       </div>
     </>
   );

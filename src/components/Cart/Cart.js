@@ -92,15 +92,9 @@ export default function Cart() {
       <Box className="cart-box container">
         <div>
           <Button variant="info" size="sm">
-            {cartProducts.length !== 0 ? (
-              <Link className="link" to={"/products"}>
-                CONTINUAR COMPRA
-              </Link>
-            ) : (
-              <Link className="link" to={"/products"}>
-                VOLVER A PRODCUTOS
-              </Link>
-            )}
+            <Link className="link" to={"/products"}>
+              CONTINUAR COMPRA
+            </Link>
           </Button>
         </div>
         <div className="card-footer cart-total">
