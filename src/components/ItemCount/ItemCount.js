@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef } from "react";
+import Stack from "@mui/material/Stack";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+import Button from "@mui/material/Button";
 import "./ItemCount.css";
 import Toast from "../Toast/Toast";
 
@@ -21,6 +25,35 @@ const ItemCount = (prop) => {
       : console.log(`El stock minimo es de 1 unidad`);
   };
 
+  /*  */
+  const Alert = forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+
+  const [open, setOpen] = useState(false);
+  const [state, setState] = useState({
+    open: false,
+    vertical: "bottom",
+    horizontal: "rigth",
+  });
+
+  const { vertical, horizontal } = state;
+
+  const handleClick = (e, newState) => {
+    setOpen(true);
+    e.stopPropagation();
+    setState({ open: true, ...newState });
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+  /*  */
+
   return (
     <>
       <div className="card-footer">
@@ -34,11 +67,33 @@ const ItemCount = (prop) => {
             +
           </button>
         </div>
-        <Toast
-          className="btn btn-primary"
-          onClick={(e) => onAdd(e, count)}
-          name={name}
-        />
+        <Stack spacing={2} sx={{ width: "100%" }}>
+          <Button
+            variant="outlined"
+            onClick={(e) =>
+              handleClick(e, {
+                vertical: "bottom",
+                horizontal: "right",
+              })
+            }
+          >
+            Agregar
+          </Button>
+          <Snackbar
+            anchorOrigin={{ vertical, horizontal }}
+            open={open}
+            autoHideDuration={6000}
+            onClose={handleClose}
+          >
+            <Alert
+              onClose={handleClose}
+              severity="success"
+              sx={{ width: "100%" }}
+            >
+              {name} agregado al carrito!
+            </Alert>
+          </Snackbar>
+        </Stack>
       </div>
     </>
   );

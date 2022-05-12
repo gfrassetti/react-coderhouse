@@ -7,7 +7,6 @@
 }
 
 .card-item:hover {
-  transform: scale(1.01);
   box-shadow: 5px 10px 8px #888888;
 }
 
