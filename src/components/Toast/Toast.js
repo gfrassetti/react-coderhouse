@@ -36,7 +36,7 @@ export default function Toast({ name }) {
   return (
     <Stack spacing={2} sx={{ width: "100%" }}>
       <Button
-        variant="outlined"
+        variant="contained"
         onClick={(e) =>
           handleClick(e, {
             vertical: "bottom",
